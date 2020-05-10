@@ -44,25 +44,13 @@
     </header>
     <main role="main">
       <div class='text-center'>
-        <div>
-          {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
+    
           {% block content %}
 
     <div style='margin-top: 150px;'>
-              <h2 class="main-header">Turn YouTube Videos Into Podcasts</h2>
+              <h2 class="main-header">Senih Tosun</h2>
 
-              <div>
-                <form id='form-id' method='POST'>{% csrf_token %}
-                  <input class='url_box' type='url' name='url_value' placeholder='Paste the URL...' id='url_box'/> <br>
-                  <button class='submit-btn' id='main-btn' type='button'>Listen</button>            
-                </form>
-              </div>
+           
 
     </div>
 
