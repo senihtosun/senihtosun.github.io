@@ -10,13 +10,43 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+    <!-- NAVIGATION -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" id='test' href="#first">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+              </div>
+  
+              <!-- Navbar Right Side -->
+              <div class="navbar-nav">
+                
+                  <a class="nav-item nav-link" href="#">Projects</a>
+                  <a class="nav-item nav-link" href="#">Experience</a>
+                
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
 
-    <div class="text-center">  
+    <!-- NAVIGATION -->
+
+    <!-- Personal Image, Name and social media icons  -->
+    <div id='first' class="text-center">  
         <img id="personal-img" src="personal.jpg" class="rounded-circle" >
         <h1 class='mt-5' id='name'>Senih Tosun</h1>
         <h2 class='description'> Computer Science Student </h2>
@@ -28,27 +58,14 @@
     </div>
 
 
-    <h1 style='text-align: center; margin-top: 150px; font-weight: normal;'> Languages and Frameworks </h1>
 
+    <!-- TECHNICAL SKILLS -->
 
-    <div class="container">
-        <div id='left'>
-        <ul>
-            <li class="python">Python</li>
-            <li class="JS">JavaScript</li>
-            <li class="nodejs">node.js</li>
-            <li class="cpp">c++</li>
-        </ul>
-        </div>
     
-        <div id='right'>
-        <ul>
-            <li class="java">java</li>
-            <li class="django">django</li>
-            <li class='mongodb'>mongodb</li>
-        </ul>
-
-    </div>
+   
 
 </body>
+
+<script src="index.js"></script>
+
 </html>
