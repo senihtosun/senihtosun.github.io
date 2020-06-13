@@ -1,2 +1,2 @@
 # senihtosun.github.io
-Let's see
+My personal site
