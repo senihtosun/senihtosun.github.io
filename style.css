@@ -17,7 +17,6 @@
 
 .fa{
     margin: 5px;
-    font-size: 45px;
 }
 
 .fa.fa-github{
@@ -26,6 +25,11 @@
 }
 
 .fa.fa-linkedin{
+    font-size: 45px;
+}
+
+.fa.fa-youtube{
+    color: red;
     font-size: 45px;
 }
 
