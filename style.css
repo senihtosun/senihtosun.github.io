@@ -1,3 +1,7 @@
+body{
+    font-family: 'Raleway', sans-serif;;
+}
+
 #personal-img{
     height: 250px;
     width: 250px;
@@ -5,15 +9,25 @@
     border: 3px solid black;
 }
 
-
 .description{
     font-weight: bold;
 }
 
+#second{
+    margin-top: 450px;
+}
+
 #name{  
-    font-weight: normal;
-    font-size: 2.5rem;
+    color: black;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-decoration: none;   
+    font-size: 40px;
 }    
+
+#projects{
+    font-size: 40px;
+}
 
 .fa{
     margin: 5px;
@@ -53,5 +67,4 @@
 }
 .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
