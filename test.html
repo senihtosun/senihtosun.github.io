@@ -43,9 +43,9 @@
     function respond(){
         switch(speechRec.resultString){
             case 'hello': speechSynth.speak('Hello Senih'); break;
-            case 'what time is it': responseLabel.innerHTML = 'Current Time: ' + currentTime; break;
-            case 'good morning': responseLabel.innerHTML = 'Good morning how can I help you?'; break;
-            case 'good night': responseLabel.innerHTML = 'Good night Senih'; break;
+            case 'what time is it': speechSynth.speak('The Time is' + currentTime); break;
+            case 'good morning': speechSynth.speak('Good morning how can I help you'); break;
+            case 'good night': speechSynth.speak('Have a good night Senih'); break;
         }
     }
 
