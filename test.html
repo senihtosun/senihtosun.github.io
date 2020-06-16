@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Voice Bot</title>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
+    <script type="text/javascript" src="p5.speech.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class='text-center'>
+        <h1 id='text-appear'> Talk with me boi  </h1>
+        <label id='resp-label'> Response: </label>
+    </div>
+
+    <button id='test'></button>
+
+</body>
+
+<script>    
+
+    let currentTime = new Date().toLocaleString()
+
+    let responseLabel = document.getElementById('resp-label')
+
+    let speechRec = new p5.SpeechRec(); // speech recognition object
+    let speechSynth = new p5.Speech() // speech synthesis object
+    
+    speechRec.onResult = respond; // bind callback function to trigger when speech is recognized
+
+    continuous = true
+    interim = false
+
+    speechRec.start(continuous, interim); // start listening
+
+
+    function respond(){
+        switch(speechRec.resultString){
+            case 'hello': speechSynth.speak('Hello Senih'); break;
+            case 'what time is it': responseLabel.innerHTML = 'Current Time: ' + currentTime; break;
+            case 'good morning': responseLabel.innerHTML = 'Good morning how can I help you?'; break;
+            case 'good night': responseLabel.innerHTML = 'Good night Senih'; break;
+        }
+    }
+
+    
+
+</script>
+</html>
