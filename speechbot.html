@@ -44,13 +44,13 @@
     		// Function to respond to commands
     		function respond(){
       			switch(speechRec.resultString){
-        			case 'hello': speechSynth.speak('Hello Senih how are you today'); break;
+        			case 'hello': speechSynth.speak('Hello this is Senih\'s personal assistant piri how can I help you'); break;
         			case 'what time is it': speechSynth.speak('The time is' + currentTime.split(':')[0] + ' ' + currentTime.split(':')[1]); break;
         			case 'good morning': speechSynth.speak('Good morning how can I help you'); break;
         			case 'good night': speechSynth.speak('Have a good night Senih'); break; 
-        			case 'where am I from': speechSynth.speak('You are from Turkey'); break;
+        			case 'where is the author from': speechSynth.speak('You are from Turkey'); break;
         			case 'what is the date today': speechSynth.speak('Today is' + currentDate); break;
-				case 'my mom is here':
+				case 'learn my Name':
 					let name = window.prompt('Enter her name:')
 					speechSynth.speak('Hello ' + name); 
 					break;
