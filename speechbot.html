@@ -51,7 +51,7 @@
         			case 'where am I from': speechSynth.speak('You are from Turkey'); break;
         			case 'what is the date today': speechSynth.speak('Today is' + currentDate); break;
 				case 'my mom is here':
-					let name = alert('Enter her name:')
+					let name = window.prompt('Enter her name:')
 					speechSynth.speak('Hello ' + name); 
 					break;
       			}
