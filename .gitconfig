@@ -1,0 +1,6 @@
+[filter "tabspace2"]
+    smudge = unexpand --tabs=2 --first-only
+    clean = expand --tabs=2 --initial
+    
+*.js  filter=tabspace2
+*.html  filter=tabspace2
