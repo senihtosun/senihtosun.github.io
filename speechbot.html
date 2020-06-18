@@ -50,9 +50,7 @@
 			})
 		}	
 			      
-		getWeather()
-		
-		console.log(temperature + ' ' + description)
+	
 		
 		
     		// Function to respond to commands
@@ -64,7 +62,7 @@
         			case 'good night': speechSynth.speak('Have a good night Senih'); break; 
         			case 'where is the author from': speechSynth.speak('You are from Turkey'); break;
         			case 'what is the date today': speechSynth.speak('Today is' + currentDate); break;
-				case 'What is the weather like': speechSynth.speak('The temperature is: ' + temperature); break; 
+				case 'What is the weather like': speechSynth.speak('The temperature is: ' + getWeather().temperature); break; 
       			}
     		}
 	
