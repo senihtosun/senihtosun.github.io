@@ -47,7 +47,7 @@
 			.then(data => {  
 				var temperature = data['main']['temp'];
 				var description = data['weather'][0]['description'];
-				speechSynth.speak('the temperature is ' + temperature)
+				speechSynth.speak('the temperature is ' + temperature + 'celcius,  with ' + description)
 			})
 		}	
 			      
