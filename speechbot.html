@@ -40,7 +40,19 @@
     		// Start listening	
     		speechRec.start(continuous, interim); // start listening
 
-    
+		// Function for weather
+		function getWeather(){
+			fetch('https://api.openweathermap.org/data/2.5/weather?q=greensboro&appid=50a7aa80fa492fa92e874d23ad061374')
+			.then(response => response.json())
+			.then(data => {  
+				var temperature = data['main']['temp'];
+				var description = data['weather'][0]['description'];
+			}
+		}	
+			      
+		getWeather()
+		
+		
     		// Function to respond to commands
     		function respond(){
       			switch(speechRec.resultString){
@@ -50,6 +62,7 @@
         			case 'good night': speechSynth.speak('Have a good night Senih'); break; 
         			case 'where is the author from': speechSynth.speak('You are from Turkey'); break;
         			case 'what is the date today': speechSynth.speak('Today is' + currentDate); break;
+				case 'What is the weather like': speechSynth.speak('The temperature is: ' + temperature); break; 
       			}
     		}
 	
