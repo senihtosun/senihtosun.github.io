@@ -47,7 +47,7 @@
 			.then(data => {  
 				var temperature = data['main']['temp'];
 				var description = data['weather'][0]['description'];
-				console.log(temperature + ' ' + description)
+				speechSynth.speak('the temperature is ' + temperature)
 			})
 		}	
 			      
@@ -61,7 +61,7 @@
         			case 'good night': speechSynth.speak('Have a good night Senih'); break; 
         			case 'where is the author from': speechSynth.speak('You are from Turkey'); break;
         			case 'what is the date today': speechSynth.speak('Today is' + currentDate); break;
-				case 'What is the weather like': speechSynth.speak('The temperature is: ' + getWeather().temperature); break; 
+				case 'What is the weather like': getWeather(); break; 
       			}
     		}
 	
