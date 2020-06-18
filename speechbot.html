@@ -18,7 +18,6 @@
 
     <div class='text-center'>
         <h1 id='text-appear'> Talk with me boi  </h1>
-        <label id='resp-label'> Response: </label>
     </div>
 
 </body>
@@ -26,8 +25,6 @@
 	<script>
 		let currentTime = new Date().toLocaleTimeString()
 		let currentDate = new Date().toLocaleDateString()
-
-    		let responseLabel = document.getElementById('resp-label')
 
 		let speechRec = new p5.SpeechRec(); // speech recognition object
     		let speechSynth = new p5.Speech() // speech synthesis object
@@ -40,8 +37,20 @@
     		// Start listening	
     		speechRec.start(continuous, interim); // start listening
 
-		// Function for weather
+		// Function for getting user's geological location and weather information
 		function getWeather(){
+			
+			$.ajax({
+				url: "https://geolocation-db.com/jsonp",
+			  	jsonpCallback: "callback",
+			  	dataType: "jsonp",
+			  	success: function(location) {
+			    		cityName = location.city
+			  	}
+			});
+				
+			console.log(cityName)
+			
 			fetch('https://api.openweathermap.org/data/2.5/weather?q=greensboro&units=metric&appid=50a7aa80fa492fa92e874d23ad061374')
 			.then(response => response.json())
 			.then(data => {  
@@ -50,16 +59,17 @@
 				speechSynth.speak('the temperature is ' + temperature + 'celcius,  with ' + description)
 			})
 		}	
-			      
+			  
+		
 		
     		// Function to respond to commands
     		function respond(){
       			switch(speechRec.resultString){
-        			case 'hello': speechSynth.speak('Hi this is Senih\'s personal assistant piri how can I help you'); break;
+        			case 'hello': speechSynth.speak('Hi this is Piri how can I help you'); break;
         			case 'what time is it': speechSynth.speak('The time is' + currentTime.split(':')[0] + ' ' + currentTime.split(':')[1]); break;
-        			case 'good morning': speechSynth.speak('what is up how can I help you'); break;
-        			case 'good night': speechSynth.speak('Have a good night Senih'); break; 
-        			case 'where is the author from': speechSynth.speak('You are from Turkey'); break;
+        			case 'good morning': speechSynth.speak('morning how can I help you'); break;
+        			case 'good night': speechSynth.speak('Have a good night'); break; 
+        			case 'where is the author from': speechSynth.speak('He is from Turkey'); break;
         			case 'what is the date today': speechSynth.speak('Today is' + currentDate); break;
 				case 'what is the weather like': getWeather(); break; 
       			}
