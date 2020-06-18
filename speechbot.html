@@ -40,14 +40,19 @@
 		// Function for getting user's geological location and weather information
 		function getWeather(){
 			
-			$.ajax({
-				url: "https://geolocation-db.com/jsonp",
-			  	jsonpCallback: "callback",
-			  	dataType: "jsonp",
-			  	success: function(location) {
-			    		let cityName = location.city
-			  	}
-			});
+			function location(){
+				$.ajax({
+					url: "https://geolocation-db.com/jsonp",
+			  		jsonpCallback: "callback",
+			  		dataType: "jsonp",
+			  		success: function(location) {
+			    			let cityName = location.city
+			  		}
+				});
+			}
+			
+			// Call the function to get the location
+			location()
 				
 			console.log(cityName)
 			
