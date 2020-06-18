@@ -52,7 +52,7 @@
 					fetch(url)
 						.then(response => response.json())
 						.then(data => {  
-							let temperature = data['main']['temp'];
+							let temperature = Math.round(data['main']['temp']);
 							let tempFahr = Math.round(temperature * (9/5) + 32)
 							let description = data['weather'][0]['description'];
 							speechSynth.speak('the temperature is ' + temperature + 'degrees celcius and' +
