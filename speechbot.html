@@ -47,7 +47,9 @@
 				success: function(location) {
 			    		console.log(location.city)
 					// Get the weather information after finding the location
-					fetch('https://api.openweathermap.org/data/2.5/weather?q=greensboro&units=metric&appid=50a7aa80fa492fa92e874d23ad061374')
+					let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + location.city + '&units=metric&appid=50a7aa80fa492fa92e874d23ad061374'
+					
+					fetch(url)
 						.then(response => response.json())
 						.then(data => {  
 							var temperature = data['main']['temp'];
