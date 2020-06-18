@@ -40,29 +40,22 @@
 		// Function for getting user's geological location and weather information
 		function getWeather(){
 			
-			function location(){
-				$.ajax({
-					url: "https://geolocation-db.com/jsonp",
-			  		jsonpCallback: "callback",
-			  		dataType: "jsonp",
-			  		success: function(location) {
-			    			let cityName = location.city
-			  		}
-				});
-			}
-			
-			// Call the function to get the location
-			location()
-				
-			console.log(cityName)
-			
-			fetch('https://api.openweathermap.org/data/2.5/weather?q=greensboro&units=metric&appid=50a7aa80fa492fa92e874d23ad061374')
-			.then(response => response.json())
-			.then(data => {  
-				var temperature = data['main']['temp'];
-				var description = data['weather'][0]['description'];
-				speechSynth.speak('the temperature is ' + temperature + 'celcius,  with ' + description)
-			})
+			$.ajax({
+				url: "https://geolocation-db.com/jsonp",
+		  		jsonpCallback: "callback",
+		  		dataType: "jsonp",
+				success: function(location) {
+			    		console.log(location.city)
+					// Get the weather information after finding the location
+					fetch('https://api.openweathermap.org/data/2.5/weather?q=greensboro&units=metric&appid=50a7aa80fa492fa92e874d23ad061374')
+						.then(response => response.json())
+						.then(data => {  
+							var temperature = data['main']['temp'];
+							var description = data['weather'][0]['description'];
+							speechSynth.speak('the temperature is ' + temperature + 'celcius,  with ' + description)
+						})
+					}
+			});
 		}	
 			  
 		
