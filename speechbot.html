@@ -40,9 +40,9 @@
     		interim = false
 
     		// Start listening	
-		$('#mic-btn').click(){
+		$('#mic-btn').click( () => {
 			alert('hello')
-		}
+		})
     		speechRec.start(continuous, interim); // start listening
 
 		// Function for getting user's geological location and weather information
