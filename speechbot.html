@@ -18,6 +18,9 @@
 
     <div class='text-center'>
         <h1 id='text-appear'> Talk with me boi  </h1>
+	<h2>You can ask questions like: </h2>
+	<h4>Hello What time is it? <br> How is the weather today<br> What time is it? <br> Where is the author from? <br>
+		What is the date today?
     </div>
 
 </body>
@@ -69,11 +72,9 @@
       			switch(speechRec.resultString){
         			case 'hello': speechSynth.speak('Hi this is Piri how can I help you'); break;
         			case 'what time is it': speechSynth.speak('The time is' + currentTime.split(':')[0] + ' ' + currentTime.split(':')[1]); break;
-        			case 'good morning': speechSynth.speak('morning how can I help you'); break;
-        			case 'good night': speechSynth.speak('Have a good night'); break; 
         			case 'where is the author from': speechSynth.speak('He is from Turkey'); break;
         			case 'what is the date today': speechSynth.speak('Today is' + currentDate); break;
-				case 'what is the weather like': getWeather(); break; 
+				case 'How is the weather today': getWeather(); break; 
       			}
     		}
 	
