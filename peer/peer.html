@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Peer JS</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.3.0/peerjs.min.js'></script>
+</head>
+  <body>
+    
+  </body>
+
+  <script>
+    
+    let peer = new Peer()
+
+    peer.on('open', function(id) {
+      alert('Your ID is: ' + id)
+    })
+
+  </script>
+
+</html>
