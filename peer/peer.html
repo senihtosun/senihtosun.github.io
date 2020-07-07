@@ -6,7 +6,15 @@
     <script src="peerjs.min.js"></script>
   </head>
   <body>
-  	Peer JS Test
+  	<input type="text" id="callings"></input>
+		<button class="button-call" onclick="call()">Call</button>
+		<audio controls></audio>
+		<div class="answerer-code">
+			<button class="button-answ" onclick="answerer()">Answerer</button>
+			<div id="peerid"></div>
+		</div>
+		<div class="bottom-space"></div>
+	</div>
   </body>
   
   <script>
