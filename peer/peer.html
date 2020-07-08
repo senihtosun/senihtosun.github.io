@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <title> Peer JS </title>
-    <script src="peerjs.min.js"></script>
-  </head>
-  <body>
-  	<input type="text" id="callings"></input>
-		<button class="button-call" onclick="call()">Call</button>
+<html>
+
+<head>
+	<title>VoiceApp is phone calls for your web browser</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="text-center">
+        <h1> Pirify Peer to Peer Chat </h1> <br>
+
+		<input type="text" id="id_to_call">
+        
+        <button class="btn btn-dark" onclick="call()">Call</button> <br><br>
 		<audio controls></audio>
-		<div class="answerer-code">
-			<button class="button-answ" onclick="answerer()">Answerer</button>
-			<div id="peerid"></div>
-		</div>
-		<div class="bottom-space"></div>
+        <br><br>
+        <button class="btn btn-dark" onclick="answer()">Answer</button> <br><br>
+        <label id='peerid'></label> <br>
+		
 	</div>
-  </body>
-  
-  <script>
-  
-	  var getUserMedia = (function () {
+	<script src="peerjs.min.js"></script>
+    
+    <script>
+
+		var getUserMedia = (function () {
 			if (navigator.getUserMedia) {
 				return navigator.getUserMedia.bind(navigator)
 			}
@@ -33,28 +38,34 @@
 
 		function onReceiveStream(stream) {
 			var audio = document.querySelector('audio');
-			console.log(audio);
 			audio.srcObject = stream;
-			audio.onloadedmetadata = function (e) {
-				console.log('now playing the audio');
+			audio.onloadedmetadata = (e) => {
+				console.log('Call established');
 				audio.play();
 			}
 		}
 
 		function call() {
-			var person_to_call = document.getElementById('callings').value;
-			console.log('WE IS CALLINNNN BRO ' + person_to_call);
+			var id_to_call = document.getElementById('id_to_call').value;
+			console.log('You are calling ' + id_to_call);
 			var peer = new Peer({
-				host: 'senihpeer2peer.herokuapp.com',
-				port: '443',
-				path: '/mypath',
-				secure: true
-			});
+                host: 'senihpeer2peer.herokuapp.com',
+                port: 443,
+                path: '/myapp',
+                secure: true,
+            });
+
+            let message = '<br>Share this ID with a peer to connect'
+
+            peer.on('open', (id) => {
+                document.getElementById('peerid').innerHTML = 'Your ID is ' + id + message;
+            }) 
+
 			getUserMedia({
 				video: false,
 				audio: true
 			}, function (stream) {
-				var call = peer.call(person_to_call, stream);
+				var call = peer.call(id_to_call, stream);
 				call.on('stream', function (remoteStream) {
 					console.log(remoteStream);
 					onReceiveStream(remoteStream);
@@ -66,22 +77,26 @@
 
 		}
 
-		function answerer() {
+		function answer() {
 			var peer = new Peer({
-				host: 'senihpeer2peer.herokuapp.com',
-				port: '443',
-				path: '/mypath',
-				secure: true
-			});
+                host: 'senihpeer2peer.herokuapp.com',
+                port: 443,
+                path: '/myapp',
+                secure: true,
+            });
+
+            let message = '<br>Share this ID with a peer to connect'
+
 			peer.on('open', (id) => {
-				document.getElementById('peerid').innerHTML = id;
+                document.getElementById('peerid').innerHTML = 'Your ID is ' + id + message;
 			});
+
 			peer.on('call', function (call) {
 				getUserMedia({
 					video: false,
 					audio: true
 				}, function (stream) {
-					console.log("WE IS GETTIN CALLEDDDD");
+					console.log("You are getting called");
 					call.answer(stream); // Answer the call with an A/V stream.
 					call.on('stream', function (remoteStream) {
 						console.log(remoteStream);
@@ -93,6 +108,8 @@
 				});
 			});
 		}
+	</script>
 
-  </script>
+</body>
+
 </html>
