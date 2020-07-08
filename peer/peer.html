@@ -19,7 +19,10 @@
   
   <script>
 	
-  	let peer = new Peer(secure:true);
+  	let peer = new Peer(host: 'https://9000-f585e490-611e-4c6d-95c2-65285d567841.ws-us02.gitpod.io',
+			    port: '443',
+			    path: '/',
+			    secure: true);
 
   	peer.on('open', function(id) {
   		console.log('My peer ID is: ' + id);
