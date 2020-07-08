@@ -18,21 +18,7 @@
   </body>
   
   <script>
-  	let peer = new Peer({
-		host: 'https://9000-f585e490-611e-4c6d-95c2-65285d567841.ws-us02.gitpod.io/',
-		port: '443',
-		path: '/',
-		secure: true
-	});
-	  
-	peer.on('connection', function(data){
-		data.open = true;
-	})
-
-  	peer.on('open', function(id) {
-  		console.log('My peer ID is: ' + id);
-	}); 
-	  
+  
 	  var getUserMedia = (function () {
 			if (navigator.getUserMedia) {
 				return navigator.getUserMedia.bind(navigator)
@@ -58,7 +44,12 @@
 		function call() {
 			var person_to_call = document.getElementById('callings').value;
 			console.log('WE IS CALLINNNN BRO ' + person_to_call);
-			var peer = new Peer();
+			var peer = new Peer({
+				host: 'senihpeer2peer.herokuapp.com',
+				port: '443',
+				path: '/mypath',
+				secure: true
+			});
 			getUserMedia({
 				video: false,
 				audio: true
@@ -76,7 +67,12 @@
 		}
 
 		function answerer() {
-			var peer = new Peer();
+			var peer = new Peer({
+				host: 'senihpeer2peer.herokuapp.com',
+				port: '443',
+				path: '/mypath',
+				secure: true
+			});
 			peer.on('open', (id) => {
 				document.getElementById('peerid').innerHTML = id;
 			});
