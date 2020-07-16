@@ -1,57 +1,60 @@
 <html>
 <head>
-  <title> Chat App </title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <title>Chat App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 </head>
 
 <body>
-  <h1> Chat App <h1>
 
-  <form>  
-    <input type='text' class='username' placeholder='Enter Name'/>
-    <input type='text' class='message' placeholder='Message'/>
-    <input type='submit' value='Send'>  
-  </form>
+<h1>Live Chat</h1<br><br>
 
-  <div class='message_field'> </div>
-<body>
+<form action='' method='POST'>
+  <input type='text' class='user' placeholder='Enter name'/>
+  <input type='text' class='message' placeholder='Enter message'/>
+  <input type='submit'/> 
+</form>
+
+<h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
+<div class="message_field"></div>
+
 
 <script>
 
-  let socket = io.connect('https://' + document.domain + ':' + location.port)
+let socket = io.connect('https://' + document.domain);
 
-  socket.on('connect', () => {
-    socket.emit('my event', {
-      data: 'new user connected'
-    })
+socket.on('connect', function() {
+  socket.emit('my event', {
+    data: 'User Connected' 
+	})
 
-
-    let form = $('form').on('submit', function(e){
-      e.preventDefault()
-
-      let user = $('input.username').val()
+  let form = $('form').on('submit', function(e) {
+    e.preventDefault()
+      let user = $('input.user').val()
       let message = $('input.message').val()
-
-      socket.emit('my event', {
-        user: user,
-        message: message
-      })
-    
-      // Empty the message input after sending 
-      $('input.message').val('').focus()
-
-    })
+        
+	socket.emit('my event', {
+    user_name : user_name,
+      message : user_input
+  })
+        
+  // Empty the message after sending
+  $('input.message').val('').focus()
+        
+	})
 })
 
-  socket.on('my response', function(msg) {
-    console.log('Your message was sent' + msg)
-    
-    if(typeof msg.user !== 'undefined'){
-      $('div.message_field').append('<div><b>' + msg.user + '</b> ' + msg.message + '</div>')
-    }
-  })
+socket.on('my response', function(msg) {
+  console.log(msg)
+  if(typeof msg.user_name !== 'undefined') {
+    $('h3').remove()
+    $('div.message_holder').append('<div><b>' + msg.user_name + '</b> ' + msg.message + '</div>')
+  }
+})
+
 
 </script>
+
+</body>
 
 </html>
