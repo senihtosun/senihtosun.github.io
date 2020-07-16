@@ -1,0 +1,57 @@
+<html>
+<head>
+  <title> Chat App </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+</head>
+
+<body>
+  <h1> Chat App <h1>
+
+  <form>  
+    <input type='text' class='username' placeholder='Enter Name'/>
+    <input type='text' class='message' placeholder='Message'/>
+    <input type='submit' value='Send'>  
+  </form>
+
+  <div class='message_field'> </div>
+<body>
+
+<script>
+
+  let socket = io.connect('http://' + document.domain + ':' + location.port)
+
+  socket.on('connect', () => {
+    socket.emit('my event', {
+      data: 'new user connected'
+    })
+
+
+    let form = $('form').on('submit', function(e){
+      e.preventDefault()
+
+      let user = $('input.username').val()
+      let message = $('input.message').val()
+
+      socket.emit('my event', {
+        user: user,
+        message: message
+      })
+    
+      // Empty the message input after sending 
+      $('input.message').val('').focus()
+
+    })
+})
+
+  socket.on('my response', function(msg) {
+    console.log('Your message was sent' + msg)
+    
+    if(typeof msg.user !== 'undefined'){
+      $('div.message_field').append('<div><b>' + msg.user + '</b> ' + msg.message + '</div>')
+    }
+  })
+
+</script>
+
+</html>
