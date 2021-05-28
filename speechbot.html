@@ -77,6 +77,8 @@
 		
     		// Function to respond to commands
     		function respond(){
+			console.log(`User Said ${speechRec.resultString}`)
+			
       			switch(speechRec.resultString){
         			case 'hello': speechSynth.speak('Hi this is Piri how can I help you'); break;
         			case 'what time is it': speechSynth.speak('The time is' + currentTime.split(':')[0] + ' ' + currentTime.split(':')[1]); break;
