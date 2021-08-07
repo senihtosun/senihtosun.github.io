@@ -78,7 +78,7 @@
     		// Function to respond to commands
     		function respond(){
 			console.log(`User Said ${speechRec.resultString}`)
-			let userSaid = speechRec.resultString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ")
+			let userSaid = speechRec.resultString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ").toLowerCase()
 				
       			switch(userSaid){
         			case 'hello': speechSynth.speak('Hi this is Piri how can I help you'); break;
